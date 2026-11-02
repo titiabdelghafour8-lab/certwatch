@@ -13,3 +13,9 @@ updates:
   - package-ecosystem: docker
     directory: /
     schedule: { interval: weekly }
+    ignore:
+      # The Go version is kept in sync across go.mod, CI (setup-go) and the
+      # Dockerfile, so minor/major Go upgrades are done by hand in one change.
+      # Patch releases (security fixes) still arrive automatically.
+      - dependency-name: golang
+        update-types: ["version-update:semver-major", "version-update:semver-minor"]
