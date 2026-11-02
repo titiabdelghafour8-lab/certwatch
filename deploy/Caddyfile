@@ -1,0 +1,16 @@
+{$CERTWATCH_DOMAIN} {
+	encode gzip
+
+	# Metrics are for your monitoring system, not the public internet.
+	@metrics path /metrics
+	respond @metrics 404
+
+	reverse_proxy api:8080 {
+		health_uri /healthz
+	}
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		-Server
+	}
+}

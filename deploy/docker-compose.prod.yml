@@ -1,0 +1,72 @@
+# Production stack for a single VM: Caddy (automatic HTTPS), API, workers and
+# PostgreSQL. See docs/deployment.md.
+#
+#   cp deploy/.env.example deploy/.env   # then edit it
+#   docker compose -f deploy/docker-compose.prod.yml --env-file deploy/.env up -d
+#
+# Scale workers horizontally at any time:
+#   docker compose -f deploy/docker-compose.prod.yml --env-file deploy/.env up -d --scale worker=3
+name: certwatch
+
+x-certwatch: &certwatch
+  image: ghcr.io/titiabdelghafour8/certwatch:${CERTWATCH_VERSION:-latest}
+  restart: unless-stopped
+  env_file: .env
+  environment:
+    CERTWATCH_DATABASE_URL: postgres://certwatch:${POSTGRES_PASSWORD}@postgres:5432/certwatch?sslmode=disable
+  depends_on:
+    postgres:
+      condition: service_healthy
+  logging:
+    driver: json-file
+    options: { max-size: "20m", max-file: "5" }
+
+services:
+  caddy:
+    image: caddy:2.8-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      CERTWATCH_DOMAIN: ${CERTWATCH_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      - api
+
+  api:
+    <<: *certwatch
+    command: ["serve"]
+    environment:
+      CERTWATCH_DATABASE_URL: postgres://certwatch:${POSTGRES_PASSWORD}@postgres:5432/certwatch?sslmode=disable
+      CERTWATCH_TRUST_PROXY: "true"
+
+  worker:
+    <<: *certwatch
+    command: ["worker"]
+    environment:
+      CERTWATCH_DATABASE_URL: postgres://certwatch:${POSTGRES_PASSWORD}@postgres:5432/certwatch?sslmode=disable
+      CERTWATCH_AUTO_MIGRATE: "false"
+
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: certwatch
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: certwatch
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U certwatch"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

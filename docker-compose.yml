@@ -1,0 +1,48 @@
+# Local development stack: PostgreSQL, the certwatch server and Mailpit
+# (catches outgoing email; open http://localhost:8025 to read it).
+#
+#   docker compose up --build
+#   certwatch --api-url http://localhost:8080 signup --email you@example.com
+#
+# Signup keys are emailed when SMTP is configured, so look in Mailpit.
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: certwatch
+      POSTGRES_PASSWORD: certwatch
+      POSTGRES_DB: certwatch
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U certwatch"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit:v1.21
+    ports:
+      - "8025:8025"
+
+  certwatch:
+    build: .
+    command: ["all"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      CERTWATCH_DATABASE_URL: postgres://certwatch:certwatch@postgres:5432/certwatch?sslmode=disable
+      CERTWATCH_PUBLIC_URL: http://localhost:8080
+      CERTWATCH_LOG_FORMAT: text
+      CERTWATCH_LOG_LEVEL: debug
+      CERTWATCH_SMTP_HOST: mailpit
+      CERTWATCH_SMTP_PORT: "1025"
+      CERTWATCH_SMTP_FROM: "certwatch <alerts@certwatch.local>"
+    ports:
+      - "8080:8080"
+
+volumes:
+  pgdata:

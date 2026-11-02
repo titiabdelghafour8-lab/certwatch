@@ -1,0 +1,95 @@
+# GoReleaser builds the CLI (and the server binary for non-Docker installs)
+# for every platform and publishes them to GitHub Releases.
+# Docs: https://goreleaser.com
+version: 2
+
+project_name: certwatch
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: certwatch
+    main: ./cmd/certwatch
+    binary: certwatch
+    env: [CGO_ENABLED=0]
+    goos: [linux, darwin, windows]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Version={{ .Version }}
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Commit={{ .ShortCommit }}
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Date={{ .Date }}
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.DefaultAPIURL={{ if index .Env "CERTWATCH_DEFAULT_API_URL" }}{{ .Env.CERTWATCH_DEFAULT_API_URL }}{{ else }}http://localhost:8080{{ end }}
+
+  - id: certwatch-server
+    main: ./cmd/certwatch-server
+    binary: certwatch-server
+    env: [CGO_ENABLED=0]
+    goos: [linux]
+    goarch: [amd64, arm64]
+    flags: [-trimpath]
+    ldflags:
+      - -s -w
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Version={{ .Version }}
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Commit={{ .ShortCommit }}
+      - -X github.com/titiabdelghafour8/certwatch/internal/version.Date={{ .Date }}
+
+archives:
+  - id: cli
+    ids: [certwatch]
+    name_template: "certwatch_{{ .Os }}_{{ .Arch }}"
+    formats: [tar.gz]
+    format_overrides:
+      - goos: windows
+        formats: [zip]
+    files: [LICENSE, README.md]
+  - id: server
+    ids: [certwatch-server]
+    name_template: "certwatch-server_{{ .Os }}_{{ .Arch }}"
+    formats: [tar.gz]
+    files: [LICENSE, README.md]
+
+checksum:
+  name_template: checksums.txt
+
+snapshot:
+  version_template: "{{ incpatch .Version }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude: ["^docs:", "^test:", "^chore:", "^ci:"]
+
+release:
+  footer: |
+    **Install the CLI**
+
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.sh | sh
+    ```
+
+    **Run the server**
+
+    ```sh
+    docker pull ghcr.io/titiabdelghafour8/certwatch:{{ .Version }}
+    ```
+
+# Optional: publish to a Homebrew tap and a Scoop bucket. Create the repos
+# titiabdelghafour8/homebrew-tap and titiabdelghafour8/scoop-bucket, add a
+# token with write access as the TAP_GITHUB_TOKEN secret, then uncomment.
+#
+# brews:
+#   - ids: [cli]
+#     repository: { owner: titiabdelghafour8, name: homebrew-tap, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
+#     homepage: https://github.com/titiabdelghafour8/certwatch
+#     description: Never let a TLS certificate or domain expire again
+#     license: MIT
+# scoops:
+#   - ids: [cli]
+#     repository: { owner: titiabdelghafour8, name: scoop-bucket, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
+#     homepage: https://github.com/titiabdelghafour8/certwatch
+#     description: Never let a TLS certificate or domain expire again
+#     license: MIT
