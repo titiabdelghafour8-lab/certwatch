@@ -2,7 +2,7 @@
 // here; the API enforces them and the CLI displays them.
 package plans
 
-import "github.com/titiabdelghafour8/certwatch/internal/model"
+import "github.com/titiabdelghafour8-lab/certwatch/internal/model"
 
 // Unlimited marks a limit that is not enforced.
 const Unlimited = -1

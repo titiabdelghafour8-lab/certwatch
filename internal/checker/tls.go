@@ -9,8 +9,8 @@ import (
 	"net"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
-	"github.com/titiabdelghafour8/certwatch/internal/netguard"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/netguard"
 )
 
 // TLSChecker reads the leaf certificate presented by a TLS server.

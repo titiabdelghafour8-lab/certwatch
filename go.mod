@@ -1,4 +1,4 @@
-module github.com/titiabdelghafour8/certwatch
+module github.com/titiabdelghafour8-lab/certwatch
 
 go 1.24
 

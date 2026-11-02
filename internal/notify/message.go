@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 // Event identifies why a message is sent. It is part of the webhook payload

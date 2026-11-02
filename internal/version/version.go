@@ -5,7 +5,7 @@ import "fmt"
 
 // These variables are overridden at build time, e.g.
 //
-//	-X github.com/titiabdelghafour8/certwatch/internal/version.Version=v1.2.3
+//	-X github.com/titiabdelghafour8-lab/certwatch/internal/version.Version=v1.2.3
 var (
 	Version = "dev"
 	Commit  = "none"
@@ -23,5 +23,5 @@ func String() string {
 
 // UserAgent is sent with every outbound HTTP request.
 func UserAgent() string {
-	return "certwatch/" + Version + " (+https://github.com/titiabdelghafour8/certwatch)"
+	return "certwatch/" + Version + " (+https://github.com/titiabdelghafour8-lab/certwatch)"
 }

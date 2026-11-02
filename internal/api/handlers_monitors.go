@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/titiabdelghafour8/certwatch/internal/alerting"
-	"github.com/titiabdelghafour8/certwatch/internal/checker"
-	"github.com/titiabdelghafour8/certwatch/internal/model"
-	"github.com/titiabdelghafour8/certwatch/internal/plans"
-	"github.com/titiabdelghafour8/certwatch/internal/store"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/alerting"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/checker"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/plans"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/store"
 )
 
 func (s *Server) handleListMonitors(w http.ResponseWriter, r *http.Request, u model.User) {

@@ -9,8 +9,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/titiabdelghafour8/certwatch/internal/client"
-	"github.com/titiabdelghafour8/certwatch/internal/version"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/client"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/version"
 )
 
 // ExitError carries a specific process exit code.

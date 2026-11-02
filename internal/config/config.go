@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/plans"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/plans"
 )
 
 type Config struct {

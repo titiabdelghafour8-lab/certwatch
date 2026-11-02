@@ -19,10 +19,10 @@ builds:
     flags: [-trimpath]
     ldflags:
       - -s -w
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Version={{ .Version }}
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Commit={{ .ShortCommit }}
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Date={{ .Date }}
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.DefaultAPIURL={{ if index .Env "CERTWATCH_DEFAULT_API_URL" }}{{ .Env.CERTWATCH_DEFAULT_API_URL }}{{ else }}http://localhost:8080{{ end }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Version={{ .Version }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Commit={{ .ShortCommit }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Date={{ .Date }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.DefaultAPIURL={{ if index .Env "CERTWATCH_DEFAULT_API_URL" }}{{ .Env.CERTWATCH_DEFAULT_API_URL }}{{ else }}http://localhost:8080{{ end }}
 
   - id: certwatch-server
     main: ./cmd/certwatch-server
@@ -33,9 +33,9 @@ builds:
     flags: [-trimpath]
     ldflags:
       - -s -w
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Version={{ .Version }}
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Commit={{ .ShortCommit }}
-      - -X github.com/titiabdelghafour8/certwatch/internal/version.Date={{ .Date }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Version={{ .Version }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Commit={{ .ShortCommit }}
+      - -X github.com/titiabdelghafour8-lab/certwatch/internal/version.Date={{ .Date }}
 
 archives:
   - id: cli
@@ -68,28 +68,28 @@ release:
     **Install the CLI**
 
     ```sh
-    curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.sh | sh
+    curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8-lab/certwatch/main/scripts/install.sh | sh
     ```
 
     **Run the server**
 
     ```sh
-    docker pull ghcr.io/titiabdelghafour8/certwatch:{{ .Version }}
+    docker pull ghcr.io/titiabdelghafour8-lab/certwatch:{{ .Version }}
     ```
 
 # Optional: publish to a Homebrew tap and a Scoop bucket. Create the repos
-# titiabdelghafour8/homebrew-tap and titiabdelghafour8/scoop-bucket, add a
+# titiabdelghafour8-lab/homebrew-tap and titiabdelghafour8-lab/scoop-bucket, add a
 # token with write access as the TAP_GITHUB_TOKEN secret, then uncomment.
 #
 # brews:
 #   - ids: [cli]
-#     repository: { owner: titiabdelghafour8, name: homebrew-tap, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
-#     homepage: https://github.com/titiabdelghafour8/certwatch
+#     repository: { owner: titiabdelghafour8-lab, name: homebrew-tap, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
+#     homepage: https://github.com/titiabdelghafour8-lab/certwatch
 #     description: Never let a TLS certificate or domain expire again
 #     license: MIT
 # scoops:
 #   - ids: [cli]
-#     repository: { owner: titiabdelghafour8, name: scoop-bucket, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
-#     homepage: https://github.com/titiabdelghafour8/certwatch
+#     repository: { owner: titiabdelghafour8-lab, name: scoop-bucket, token: "{{ .Env.TAP_GITHUB_TOKEN }}" }
+#     homepage: https://github.com/titiabdelghafour8-lab/certwatch
 #     description: Never let a TLS certificate or domain expire again
 #     license: MIT

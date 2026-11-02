@@ -3,7 +3,7 @@
 ## Reporting a vulnerability
 
 Please **do not** open a public issue. Report vulnerabilities privately through
-[GitHub Security Advisories](https://github.com/titiabdelghafour8/certwatch/security/advisories/new).
+[GitHub Security Advisories](https://github.com/titiabdelghafour8-lab/certwatch/security/advisories/new).
 
 You will get an acknowledgement within 72 hours. A fix or mitigation plan
 follows within 14 days for confirmed issues, and you will be credited unless

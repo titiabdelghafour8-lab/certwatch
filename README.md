@@ -2,8 +2,8 @@
 
 **Never let a TLS certificate or domain expire again.**
 
-[![CI](https://github.com/titiabdelghafour8/certwatch/actions/workflows/ci.yml/badge.svg)](https://github.com/titiabdelghafour8/certwatch/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/titiabdelghafour8/certwatch)](https://github.com/titiabdelghafour8/certwatch/releases)
+[![CI](https://github.com/titiabdelghafour8-lab/certwatch/actions/workflows/ci.yml/badge.svg)](https://github.com/titiabdelghafour8-lab/certwatch/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/titiabdelghafour8-lab/certwatch)](https://github.com/titiabdelghafour8-lab/certwatch/releases)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 certwatch is a command-line tool and service that watches TLS certificates and
@@ -35,22 +35,22 @@ github.com       domain  2028-10-09  706   ok      MarkMonitor Inc.
 **macOS / Linux**
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8-lab/certwatch/main/scripts/install.sh | sh
 ```
 
 **Windows (PowerShell)**
 
 ```powershell
-irm https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.ps1 | iex
+irm https://raw.githubusercontent.com/titiabdelghafour8-lab/certwatch/main/scripts/install.ps1 | iex
 ```
 
 **With Go**
 
 ```sh
-go install github.com/titiabdelghafour8/certwatch/cmd/certwatch@latest
+go install github.com/titiabdelghafour8-lab/certwatch/cmd/certwatch@latest
 ```
 
-Prebuilt binaries for every platform are also on the [Releases](https://github.com/titiabdelghafour8/certwatch/releases) page.
+Prebuilt binaries for every platform are also on the [Releases](https://github.com/titiabdelghafour8-lab/certwatch/releases) page.
 
 ## Quick start
 
@@ -93,7 +93,7 @@ Configuration is read from flags, then environment variables
 ## Run your own server
 
 ```sh
-git clone https://github.com/titiabdelghafour8/certwatch && cd certwatch
+git clone https://github.com/titiabdelghafour8-lab/certwatch && cd certwatch
 docker compose up --build
 certwatch --api-url http://localhost:8080 signup --email you@example.com
 ```

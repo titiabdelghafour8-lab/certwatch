@@ -4,7 +4,7 @@ package main
 import (
 	"os"
 
-	"github.com/titiabdelghafour8/certwatch/internal/cli"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/cli"
 )
 
 func main() {

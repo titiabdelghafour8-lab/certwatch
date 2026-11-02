@@ -9,7 +9,7 @@
 name: certwatch
 
 x-certwatch: &certwatch
-  image: ghcr.io/titiabdelghafour8/certwatch:${CERTWATCH_VERSION:-latest}
+  image: ghcr.io/titiabdelghafour8-lab/certwatch:${CERTWATCH_VERSION:-latest}
   restart: unless-stopped
   env_file: .env
   environment:

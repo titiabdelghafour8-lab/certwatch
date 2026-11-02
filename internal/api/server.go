@@ -7,13 +7,13 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/billing"
-	"github.com/titiabdelghafour8/certwatch/internal/config"
-	"github.com/titiabdelghafour8/certwatch/internal/metrics"
-	"github.com/titiabdelghafour8/certwatch/internal/model"
-	"github.com/titiabdelghafour8/certwatch/internal/notify"
-	"github.com/titiabdelghafour8/certwatch/internal/ratelimit"
-	"github.com/titiabdelghafour8/certwatch/internal/store"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/billing"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/config"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/metrics"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/notify"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/ratelimit"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/store"
 )
 
 // Checker runs an immediate check for "check now" requests.

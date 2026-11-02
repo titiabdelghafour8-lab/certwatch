@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 func TestSendWebhooks(t *testing.T) {

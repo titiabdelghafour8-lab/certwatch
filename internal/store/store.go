@@ -13,7 +13,7 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 var (

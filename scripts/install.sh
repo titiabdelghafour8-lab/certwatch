@@ -1,14 +1,14 @@
 #!/bin/sh
 # Install the certwatch CLI from GitHub Releases.
 #
-#   curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.sh | sh
+#   curl -fsSL https://raw.githubusercontent.com/titiabdelghafour8-lab/certwatch/main/scripts/install.sh | sh
 #
 # Environment:
 #   CERTWATCH_VERSION      release tag to install (default: latest)
 #   CERTWATCH_INSTALL_DIR  target directory (default: /usr/local/bin, or ~/.local/bin if not writable)
 set -eu
 
-REPO="titiabdelghafour8/certwatch"
+REPO="titiabdelghafour8-lab/certwatch"
 VERSION="${CERTWATCH_VERSION:-latest}"
 
 os=$(uname -s | tr '[:upper:]' '[:lower:]')

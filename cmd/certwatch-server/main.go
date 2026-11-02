@@ -20,16 +20,16 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/api"
-	"github.com/titiabdelghafour8/certwatch/internal/billing"
-	"github.com/titiabdelghafour8/certwatch/internal/checker"
-	"github.com/titiabdelghafour8/certwatch/internal/config"
-	"github.com/titiabdelghafour8/certwatch/internal/metrics"
-	"github.com/titiabdelghafour8/certwatch/internal/netguard"
-	"github.com/titiabdelghafour8/certwatch/internal/notify"
-	"github.com/titiabdelghafour8/certwatch/internal/store"
-	"github.com/titiabdelghafour8/certwatch/internal/version"
-	"github.com/titiabdelghafour8/certwatch/internal/worker"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/api"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/billing"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/checker"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/config"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/metrics"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/netguard"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/notify"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/store"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/version"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/worker"
 )
 
 const usage = `usage: certwatch-server [command]

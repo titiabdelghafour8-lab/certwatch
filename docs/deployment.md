@@ -11,7 +11,7 @@ thousands of users.
 2. Install Docker, then:
 
    ```sh
-   git clone https://github.com/titiabdelghafour8/certwatch && cd certwatch
+   git clone https://github.com/titiabdelghafour8-lab/certwatch && cd certwatch
    cp deploy/.env.example deploy/.env
    $EDITOR deploy/.env          # set CERTWATCH_DOMAIN, PUBLIC_URL, POSTGRES_PASSWORD, SMTP...
    docker compose -f deploy/docker-compose.prod.yml --env-file deploy/.env up -d
@@ -31,7 +31,7 @@ at it and removing the `postgres` service.
 
 ### Other platforms
 
-The image `ghcr.io/titiabdelghafour8/certwatch` runs anywhere containers run:
+The image `ghcr.io/titiabdelghafour8-lab/certwatch` runs anywhere containers run:
 
 - **Fly.io / Render / Railway:** deploy the image with command `all` (or two services, `serve` and `worker`), attach a managed PostgreSQL, set the env vars, and set the health check path to `/healthz`.
 - **Kubernetes:** a `Deployment` for `serve` (readiness `/readyz`, liveness `/healthz`), another for `worker`, and optionally an init `Job` running `migrate` with `CERTWATCH_AUTO_MIGRATE=false` elsewhere.
@@ -80,7 +80,7 @@ git push origin v1.0.0
 The **Release** workflow publishes:
 
 - CLI binaries for Linux, macOS and Windows (amd64 and arm64) with checksums on GitHub Releases. The install scripts use these.
-- The server image `ghcr.io/titiabdelghafour8/certwatch:1.0.0` and `:latest` (multi-arch, with SBOM and provenance).
+- The server image `ghcr.io/titiabdelghafour8-lab/certwatch:1.0.0` and `:latest` (multi-arch, with SBOM and provenance).
 
 After the first image push, open **GitHub → Packages → certwatch → Package
 settings** and set visibility to **Public** so servers can pull without

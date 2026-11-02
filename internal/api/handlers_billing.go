@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/titiabdelghafour8/certwatch/internal/billing"
-	"github.com/titiabdelghafour8/certwatch/internal/model"
-	"github.com/titiabdelghafour8/certwatch/internal/plans"
-	"github.com/titiabdelghafour8/certwatch/internal/store"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/billing"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/plans"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/store"
 )
 
 func (s *Server) billingDisabled(w http.ResponseWriter) bool {

@@ -10,8 +10,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/titiabdelghafour8/certwatch/internal/client"
-	"github.com/titiabdelghafour8/certwatch/internal/plans"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/client"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/plans"
 )
 
 func (a *app) saveKey(key string) error {

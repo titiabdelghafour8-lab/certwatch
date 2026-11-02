@@ -17,7 +17,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/config"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/config"
 )
 
 const apiBase = "https://api.stripe.com"

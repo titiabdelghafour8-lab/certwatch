@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/netguard"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/netguard"
 )
 
 func TestNormalizeTLSTarget(t *testing.T) {

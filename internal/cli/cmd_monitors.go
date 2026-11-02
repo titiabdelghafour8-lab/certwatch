@@ -8,8 +8,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/titiabdelghafour8/certwatch/internal/client"
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/client"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 func parseID(s string) (int64, error) {

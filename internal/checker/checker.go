@@ -6,7 +6,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 // Result is the outcome of a successful lookup.

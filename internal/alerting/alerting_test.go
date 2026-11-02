@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/titiabdelghafour8/certwatch/internal/model"
+	"github.com/titiabdelghafour8-lab/certwatch/internal/model"
 )
 
 func TestStatusFor(t *testing.T) {

@@ -1,13 +1,13 @@
 # Install the certwatch CLI on Windows from GitHub Releases.
 #
-#   irm https://raw.githubusercontent.com/titiabdelghafour8/certwatch/main/scripts/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/titiabdelghafour8-lab/certwatch/main/scripts/install.ps1 | iex
 #
 # Environment:
 #   CERTWATCH_VERSION      release tag to install (default: latest)
 #   CERTWATCH_INSTALL_DIR  target directory (default: %LOCALAPPDATA%\certwatch\bin)
 $ErrorActionPreference = 'Stop'
 
-$repo = 'titiabdelghafour8/certwatch'
+$repo = 'titiabdelghafour8-lab/certwatch'
 $version = if ($env:CERTWATCH_VERSION) { $env:CERTWATCH_VERSION } else { 'latest' }
 $arch = if ([Environment]::Is64BitOperatingSystem) {
     if ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64') { 'arm64' } else { 'amd64' }
