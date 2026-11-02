@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -104,17 +105,19 @@ func printMonitors(w io.Writer, ms []model.Monitor) {
 
 // openBrowser tries to open url; failure is not an error since the URL is
 // always printed as well.
-func openBrowser(url string) {
-	var cmd *exec.Cmd
+func openBrowser(ctx context.Context, url string) {
+	if !strings.HasPrefix(url, "https://") {
+		return
+	}
+	name, args := "xdg-open", []string{url}
 	switch runtime.GOOS {
 	case "windows":
-		cmd = exec.Command("rundll32", "url.dll,FileProtocolHandler", url)
+		name, args = "rundll32", []string{"url.dll,FileProtocolHandler", url}
 	case "darwin":
-		cmd = exec.Command("open", url)
-	default:
-		cmd = exec.Command("xdg-open", url)
+		name = "open"
 	}
-	_ = cmd.Start()
+	// Fixed program, no shell; the only argument is an https URL.
+	_ = exec.CommandContext(ctx, name, args...).Start() //nolint:gosec // G204: see above
 }
 
 func parseIntList(s string) ([]int, error) {

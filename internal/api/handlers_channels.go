@@ -39,7 +39,7 @@ func (s *Server) validateChannelTarget(u model.User, kind model.ChannelKind, tar
 	if len(target) > 2048 {
 		return "", errors.New("URL is too long")
 	}
-	if parsed.Scheme != "https" && !(parsed.Scheme == "http" && s.cfg.AllowPrivateTargets) {
+	if parsed.Scheme != "https" && (parsed.Scheme != "http" || !s.cfg.AllowPrivateTargets) {
 		return "", errors.New("webhook URLs must use https")
 	}
 	host := strings.ToLower(parsed.Hostname())

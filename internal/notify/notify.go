@@ -96,7 +96,7 @@ func (d *Dispatcher) SendEmail(ctx context.Context, to, subject, body string) er
 
 	var conn net.Conn
 	if cfg.Port == 465 {
-		conn, err = tls.DialWithDialer(dialer, "tcp", addr, tlsCfg)
+		conn, err = (&tls.Dialer{NetDialer: dialer, Config: tlsCfg}).DialContext(ctx, "tcp", addr)
 	} else {
 		conn, err = dialer.DialContext(ctx, "tcp", addr)
 	}

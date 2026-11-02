@@ -37,7 +37,8 @@ func saveConfig(path string, c fileConfig) error {
 	if err := os.MkdirAll(filepath.Dir(path), 0o700); err != nil {
 		return err
 	}
-	b, err := json.MarshalIndent(c, "", "  ")
+	// Persisting the key is the point of this file; it is written with 0600.
+	b, err := json.MarshalIndent(c, "", "  ") //nolint:gosec // G117: intentional credential storage
 	if err != nil {
 		return err
 	}

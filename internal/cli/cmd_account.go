@@ -182,7 +182,7 @@ func (a *app) keysCmd() *cobra.Command {
 			t := newTable(a.out)
 			fmt.Fprintln(t, "ID\tNAME\tPREFIX\tCREATED\tLAST USED")
 			for _, k := range keys {
-				fmt.Fprintf(t, "%d\t%s\t%s…\t%s\t%s\n", k.ID, k.Name, k.Prefix, k.CreatedAt.Format("2006-01-02"), fmtTime(k.LastUsedAt))
+				fmt.Fprintf(t, "%d\t%s\t%sâ€¦\t%s\t%s\n", k.ID, k.Name, k.Prefix, k.CreatedAt.Format("2006-01-02"), fmtTime(k.LastUsedAt))
 			}
 			return t.Flush()
 		},
@@ -258,7 +258,7 @@ func (a *app) upgradeCmd() *cobra.Command {
 				return err
 			}
 			fmt.Fprintf(a.out, "Complete your upgrade in the browser:\n\n  %s\n", url)
-			openBrowser(url)
+			openBrowser(cmd.Context(), url)
 			return nil
 		},
 	}
@@ -279,7 +279,7 @@ func (a *app) billingCmd() *cobra.Command {
 				return err
 			}
 			fmt.Fprintf(a.out, "Manage your subscription here:\n\n  %s\n", url)
-			openBrowser(url)
+			openBrowser(cmd.Context(), url)
 			return nil
 		},
 	}

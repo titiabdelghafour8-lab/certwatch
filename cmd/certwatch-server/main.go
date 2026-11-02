@@ -203,12 +203,13 @@ func healthcheck() int {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
 	defer cancel()
-	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "http://"+addr+"/healthz", nil)
+	// The address is this process's own listen address from its environment.
+	req, err := http.NewRequestWithContext(ctx, http.MethodGet, "http://"+addr+"/healthz", nil) //nolint:gosec // G704: local self-probe
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return 1
 	}
-	resp, err := http.DefaultClient.Do(req)
+	resp, err := http.DefaultClient.Do(req) //nolint:gosec // G704: local self-probe
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return 1
