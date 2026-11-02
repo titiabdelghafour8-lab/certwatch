@@ -1,5 +1,4 @@
-run:
-  timeout: 5m
+version: "2"
 
 linters:
   enable:
@@ -13,22 +12,26 @@ linters:
     - unconvert
     - unparam
     - whitespace
-
-linters-settings:
-  gosec:
-    excludes:
-      - G104 # unhandled errors are covered by errcheck
-  revive:
+  settings:
+    gosec:
+      excludes:
+        - G104 # unhandled errors are covered by errcheck
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+        - name: package-comments
+          disabled: true
+    gocritic:
+      disabled-checks:
+        - ifElseChain
+  exclusions:
+    presets:
+      - std-error-handling
     rules:
-      - name: exported
-        disabled: true
-      - name: package-comments
-        disabled: true
-  gocritic:
-    disabled-checks:
-      - ifElseChain
+      - path: _test\.go
+        linters: [gosec, noctx, bodyclose, errcheck, unparam]
 
-issues:
-  exclude-rules:
-    - path: _test\.go
-      linters: [gosec, noctx, bodyclose, errcheck, unparam]
+formatters:
+  enable:
+    - gofmt

@@ -1,10 +1,10 @@
-# Contributing
+﻿# Contributing
 
 Thanks for helping improve certwatch!
 
 ## Development setup
 
-Requirements: Go 1.24+ and Docker.
+Requirements: Go 1.26+ and Docker.
 
 ```sh
 make up                 # postgres + mailpit + server on :8080
